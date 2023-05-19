@@ -1,0 +1,10 @@
+/* Populate database with sample data. */
+
+INSERT INTO animals (id, name, date_of_birth, escape_attempts, weight_kg, neutered)
+ VALUES (1, 'Agumon', 'Feb 3, 2020', 0, 10.23, true);
+INSERT INTO animals (id, name, date_of_birth, escape_attempts, weight_kg, neutered)
+ VALUES (2, 'Gabumon', 'Nov 15, 2018', 2, 8, true);
+INSERT INTO animals (id, name, date_of_birth, escape_attempts, weight_kg, neutered)
+ VALUES (3, 'Pikachu', 'Jan 7, 2021', 1, 15.04, false);
+INSERT INTO animals (id, name, date_of_birth, escape_attempts, weight_kg, neutered)
+ VALUES (4, 'Devimon', 'May 12, 2017', 5, 11, true);
