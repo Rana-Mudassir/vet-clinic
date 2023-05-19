@@ -8,7 +8,6 @@ INSERT INTO animals (name, date_of_birth, escape_attempts, weight_kg, neutered)
  VALUES ('Pikachu', '2021/1/7', 1, 15.04, false);
 INSERT INTO animals (name, date_of_birth, escape_attempts, weight_kg, neutered)
  VALUES ('Devimon', '2017/5/12', 5, 11, true);
-ALTER TABLE animals ADD species char(20);
 
 -- INSERT New Data
 INSERT INTO animals (name, date_of_birth, escape_attempts, neutered, weight_kg)  
