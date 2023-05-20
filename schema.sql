@@ -34,3 +34,24 @@ ADD COLUMN owner_id INT,
 ADD CONSTRAINT fk_owners
     FOREIGN KEY (owner_id)
     REFERENCES owners(id);
+
+CREATE TABLE vets (
+    id SERIAL PRIMARY KEY,
+    name varchar(255),
+    age INT,
+    date_of_graduation date
+)
+
+CREATE TABLE specializations (
+	vet_id INT REFERENCES vets(id),
+	species_id INT REFERENCES species(id),
+	PRIMARY KEY (vet_id, species_id )
+)
+
+CREATE TABLE visits (
+    visit_id SERIAL PRIMARY KEY,
+    animal_id INTEGER REFERENCES animals(id),
+    vet_id INTEGER REFERENCES vets(id),
+    visit_date date
+);
+
