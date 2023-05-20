@@ -42,7 +42,7 @@ SET owner_id = (SELECT id FROM owners WHERE full_name = 'Bob')
 WHERE (name = 'Devimon') OR (name = 'Plantmon');
 
 UPDATE animals
-SET owner_id = (SELECT id FROM owners WHERE full_name = 'Dean')
+SET owner_id = (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
 WHERE (name = 'Angemon') OR (name = 'Boarmon');
 
 UPDATE animals
