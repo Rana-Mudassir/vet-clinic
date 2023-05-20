@@ -51,3 +51,67 @@ JOIN owners ON animals.owner_id = owners.id
 GROUP BY owner_name
 ORDER BY COUNT(*) DESC 
 LIMIT 1;
+
+SELECT a.id, a.name AS animal_name
+FROM visits AS v
+JOIN animals AS a ON v.animal_id = a.id
+WHERE v.vet_id = (SELECT id FROM vets WHERE name = 'William Tatcher')
+ORDER BY v.visit_date DESC
+LIMIT 1;
+
+SELECT COUNT(DISTINCT animal_id) AS animal_count
+FROM visits
+WHERE vet_id = (SELECT id FROM vets WHERE name = 'Stephanie Mendez');
+
+SELECT v.name AS vet_name, sp.name AS specialty_name
+FROM vets AS v
+LEFT JOIN specializations AS s ON v.id = s.vet_id
+LEFT JOIN species AS sp ON s.species_id = sp.id;
+
+SELECT a.name AS animal_name
+FROM visits AS v
+JOIN animals AS a ON v.animal_id = a.id
+JOIN vets AS ve ON v.vet_id = ve.id
+WHERE ve.name = 'Stephanie Mendez'
+AND v.visit_date >= '2020-04-01'
+AND v.visit_date <= '2020-08-30';
+
+
+SELECT a.name AS animal_name, COUNT(*) AS visit_count
+FROM visits AS v
+JOIN animals AS a ON v.animal_id = a.id
+GROUP BY a.name
+ORDER BY visit_count DESC
+LIMIT 1;
+
+SELECT a.name AS animal_name, v.visit_date
+FROM visits AS v
+JOIN animals AS a ON v.animal_id = a.animal_id
+JOIN vets AS ve ON v.vet_id = ve.id
+WHERE ve.name = 'Maisy Smith'
+ORDER BY v.visit_date ASC
+LIMIT 1;
+
+SELECT a.name AS animal_name, v.visit_date, ve.name AS vet_name
+FROM visits AS v
+JOIN animals AS a ON v.animal_id = a.id
+JOIN vets AS ve ON v.vet_id = ve.id
+ORDER BY v.visit_date DESC
+LIMIT 1;
+
+SELECT COUNT(*) AS unmatch_specialty_count
+FROM visits AS v
+JOIN animals AS a ON v.animal_id = a.id
+JOIN vets AS ve ON v.vet_id = ve.id
+LEFT JOIN specializations AS s ON ve.id = s.vet_id AND a.species_id = s.species_id
+WHERE s.species_id IS NULL;
+
+SELECT s.id, s.name AS species_name, COUNT(*) AS species_gets_most
+FROM visits AS v
+JOIN animals AS a ON v.animal_id = a.id
+JOIN vets AS ve ON v.vet_id = ve.id
+JOIN species AS s ON a.species_id = s.id
+WHERE ve.name = 'Maisy Smith'
+GROUP BY s.id, s.name
+ORDER BY species_gets_most DESC
+LIMIT 1;
