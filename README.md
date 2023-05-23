@@ -27,7 +27,8 @@
 
 The vet_clinic database is application that allows the users to access database of every animal in veternary clinic
 
-
+Belos is Database Schema Diagram to understad better.
+<img src="/database-schama-diagram.png" alt="Database Schema Diagram">
 
 <!-- LIVE DEMO -->
 
